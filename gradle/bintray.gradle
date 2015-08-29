@@ -17,7 +17,7 @@ bintray {
         publicDownloadNumbers = true
         publish = true
         version {
-            name = 'jtwig-spring-' + project.version
+            name = project.version
             desc = 'Jtwig : Modern Template Engine for Java'
             vcsTag = "jtwig-spring-" + project.version
         }
