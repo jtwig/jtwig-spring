@@ -1,9 +1,8 @@
 package org.jtwig.spring.config;
 
-import org.jtwig.configuration.ConfigurationBuilder;
+import org.jtwig.environment.EnvironmentConfigurationBuilder;
 import org.jtwig.spring.JtwigViewResolver;
 import org.jtwig.spring.controller.SampleController;
-import org.jtwig.value.configuration.NamedValueConfiguration;
 import org.jtwig.web.servlet.JtwigRenderer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,9 +23,8 @@ public class WebConfig {
         return jtwigViewResolver;
     }
 
-    public ConfigurationBuilder getConfiguration() {
-        return ConfigurationBuilder.configuration()
-                .withValueConfiguration(NamedValueConfiguration.EFFICIENT_MODE)
+    public EnvironmentConfigurationBuilder getConfiguration() {
+        return EnvironmentConfigurationBuilder.configuration()
                 ;
     }
 }
