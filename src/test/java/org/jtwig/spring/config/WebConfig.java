@@ -2,6 +2,7 @@ package org.jtwig.spring.config;
 
 import org.jtwig.spring.JtwigViewResolver;
 import org.jtwig.spring.controller.SampleController;
+import org.jtwig.spring.prefix.DefaultPrefixResolver;
 import org.jtwig.web.servlet.JtwigRenderer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,7 @@ public class WebConfig {
         jtwigViewResolver.setRenderer(new JtwigRenderer(configuration().build()));
         jtwigViewResolver.setPrefix("classpath:/templates/");
         jtwigViewResolver.setSuffix(".twig");
+        jtwigViewResolver.setPrefixResolver(DefaultPrefixResolver.instance());
         return jtwigViewResolver;
     }
 }
