@@ -61,7 +61,10 @@ public class JtwigViewResolverTest {
 
     @Test
     public void example() throws Exception {
-        String result = Request.Get(String.format("http://localhost:%d/", DEFAULT_PORT)).execute().returnContent().asString();
+        String result = Request.Get(String.format("http://localhost:%d/", DEFAULT_PORT))
+                .execute()
+                .returnContent()
+                .asString();
 
         assertThat(result, is("Hello Jtwig!"));
     }
