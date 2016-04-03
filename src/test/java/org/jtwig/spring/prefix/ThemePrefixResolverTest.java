@@ -49,4 +49,24 @@ public class ThemePrefixResolverTest {
 
         assertThat(result, is("classpath:/templates/theme/"));
     }
+
+    @Test
+    public void resolveStatic() throws Exception {
+        String staticPrefix = "classpath:/templates/";
+        when(themeResolver.resolveThemeName(httpServletRequest)).thenReturn("/theme/");
+
+        String result = underTest.resolve(staticPrefix);
+
+        assertThat(result, is("classpath:/templates/theme/"));
+    }
+
+    @Test
+    public void resolveStaticNotEnds() throws Exception {
+        String staticPrefix = "classpath:/templates/";
+        when(themeResolver.resolveThemeName(httpServletRequest)).thenReturn("/theme");
+
+        String result = underTest.resolve(staticPrefix);
+
+        assertThat(result, is("classpath:/templates/theme/"));
+    }
 }

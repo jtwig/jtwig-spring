@@ -17,7 +17,7 @@ public class ThemePrefixResolver implements PrefixResolver {
     public String resolve(String staticPrefix) {
         String themeName = themeResolver.resolveThemeName(getRequest());
         String path = new File(staticPrefix, themeName).getPath();
-        if (staticPrefix.endsWith(File.separator) && !path.endsWith(File.separator)) {
+        if (staticPrefix.endsWith(File.separator)) {
             return path + File.separator;
         } else {
             return path;
