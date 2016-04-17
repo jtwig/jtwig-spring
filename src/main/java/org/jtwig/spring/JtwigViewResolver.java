@@ -1,6 +1,5 @@
 package org.jtwig.spring;
 
-import org.jtwig.environment.DefaultEnvironmentConfiguration;
 import org.jtwig.spring.prefix.DefaultPrefixResolver;
 import org.jtwig.spring.prefix.PrefixResolver;
 import org.jtwig.web.servlet.JtwigRenderer;
@@ -8,7 +7,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.AbstractTemplateViewResolver;
 
 public class JtwigViewResolver extends AbstractTemplateViewResolver implements ViewResolver {
-    private JtwigRenderer renderer = new JtwigRenderer(new DefaultEnvironmentConfiguration());
+    private JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
     private PrefixResolver prefixResolver = DefaultPrefixResolver.instance();
 
     public JtwigViewResolver() {
