@@ -39,7 +39,7 @@ public class JtwigViewResolverTest {
         contextHandler.setContextPath(CONTEXT_PATH);
         contextHandler.addServlet(new ServletHolder(new DispatcherServlet(context)), MAPPING_URL);
         contextHandler.addEventListener(new ContextLoaderListener(context));
-        contextHandler.setBaseResource(new FileResource(new File("src/main/webapp").getAbsoluteFile().toURI().toURL()));
+        contextHandler.setBaseResource(new FileResource(new File("src/test/webapp").getAbsoluteFile().toURI().toURL()));
         return contextHandler;
     }
 
