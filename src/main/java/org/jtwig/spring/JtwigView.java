@@ -12,8 +12,6 @@ public class JtwigView extends AbstractTemplateView {
 
     @Override
     protected void renderMergedTemplateModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        response.setContentType(getContentType());
-
         renderer.dispatcherFor(getUrl())
                 .with(model)
                 .render(request, response);
