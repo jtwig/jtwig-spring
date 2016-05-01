@@ -3,11 +3,12 @@ package org.jtwig.spring;
 import org.jtwig.spring.prefix.DefaultPrefixResolver;
 import org.jtwig.spring.prefix.PrefixResolver;
 import org.jtwig.web.servlet.JtwigRenderer;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.AbstractTemplateViewResolver;
 
-public class JtwigViewResolver extends AbstractTemplateViewResolver implements ViewResolver {
-    private JtwigRenderer renderer = JtwigRenderer.defaultRenderer();
+public class JtwigViewResolver extends AbstractTemplateViewResolver implements ViewResolver, InitializingBean {
+    private JtwigRenderer renderer;
     private PrefixResolver prefixResolver = DefaultPrefixResolver.instance();
 
     public JtwigViewResolver() {
@@ -37,5 +38,13 @@ public class JtwigViewResolver extends AbstractTemplateViewResolver implements V
     @Override
     protected String getPrefix() {
         return prefixResolver.resolve(super.getPrefix());
+    }
+
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (renderer == null) {
+            renderer = JtwigRenderer.defaultRenderer();
+        }
     }
 }
