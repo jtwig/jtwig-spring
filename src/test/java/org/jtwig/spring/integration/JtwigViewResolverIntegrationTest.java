@@ -1,11 +1,11 @@
-package org.jtwig.spring;
+package org.jtwig.spring.integration;
 
 import org.apache.http.client.fluent.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.FileResource;
-import org.jtwig.spring.config.WebConfig;
+import org.jtwig.spring.config.normal.WebConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class JtwigViewResolverTest {
+public class JtwigViewResolverIntegrationTest {
     private static final int DEFAULT_PORT = 12912;
     private static final String CONTEXT_PATH = "/";
     private static final String MAPPING_URL = "/*";
