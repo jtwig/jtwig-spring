@@ -28,10 +28,11 @@ public class WebWithPrefixConfig {
     @Bean
     public ViewResolver viewResolver () {
         log.info("WebConfig");
+        ThemePrefixResolver prefixResolver = new ThemePrefixResolver(themeResolver());
         JtwigViewResolver jtwigViewResolver = new JtwigViewResolver();
         jtwigViewResolver.setPrefix("classpath:/templates/");
         jtwigViewResolver.setSuffix(".twig");
-        jtwigViewResolver.setPrefixResolver(new ThemePrefixResolver(themeResolver()));
+        jtwigViewResolver.setPrefixResolver(prefixResolver);
         return jtwigViewResolver;
     }
 }
