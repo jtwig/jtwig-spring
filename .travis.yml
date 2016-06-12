@@ -14,4 +14,6 @@ after_success:
        gradle bintrayUpload
        curl -LO https://raw.github.com/mernst/plume-lib/master/bin/trigger-travis.sh
        sh trigger-travis.sh jtwig jtwig-spring-boot-starter $TRAVIS_ACCESS_TOKEN
+       sleep 1
+       sh trigger-travis.sh jtwig jtwig-spring-asset-extension $TRAVIS_ACCESS_TOKEN
      fi
