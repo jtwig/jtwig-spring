@@ -18,4 +18,6 @@ after_success:
        sh trigger-travis.sh jtwig jtwig-spring-asset-extension $TRAVIS_ACCESS_TOKEN
        sleep 1
        sh trigger-travis.sh jtwig jtwig-spring-csrf-extension $TRAVIS_ACCESS_TOKEN
+       sleep 1
+       sh trigger-travis.sh jtwig jtwig-spring-translate-extension $TRAVIS_ACCESS_TOKEN
      fi
