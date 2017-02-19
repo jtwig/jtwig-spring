@@ -7,17 +7,4 @@ env:
 
 after_success:
  - gradle jacocoTestReport coveralls
- - |
-     if [[ ($TRAVIS_BRANCH == master) &&
-           ($TRAVIS_PULL_REQUEST == false) &&
-           ( (! $TRAVIS_JOB_NUMBER == *.*) || ($TRAVIS_JOB_NUMBER == *.1) ) ]] ; then
-       gradle bintrayUpload
-       curl -LO https://raw.github.com/mernst/plume-lib/master/bin/trigger-travis.sh
-       sh trigger-travis.sh jtwig jtwig-spring-boot-starter $TRAVIS_ACCESS_TOKEN
-       sleep 1
-       sh trigger-travis.sh jtwig jtwig-spring-asset-extension $TRAVIS_ACCESS_TOKEN
-       sleep 1
-       sh trigger-travis.sh jtwig jtwig-spring-csrf-extension $TRAVIS_ACCESS_TOKEN
-       sleep 1
-       sh trigger-travis.sh jtwig jtwig-spring-translate-extension $TRAVIS_ACCESS_TOKEN
-     fi
+ - gradle jtwigRelease
