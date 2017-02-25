@@ -35,6 +35,10 @@ public class JtwigViewResolver extends AbstractTemplateViewResolver implements V
         return view;
     }
 
+    public JtwigRenderer getRenderer() {
+        return renderer;
+    }
+
     @Override
     protected String getPrefix() {
         return prefixResolver.resolve(super.getPrefix());
