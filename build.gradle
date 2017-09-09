@@ -32,13 +32,10 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        maven {
-            url "http://dl.bintray.com/jtwig/maven"
-        }
     }
 
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
