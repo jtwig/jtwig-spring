@@ -1,9 +1,7 @@
 apply plugin: 'java'
-apply plugin: 'org.jtwig.release'
-apply from: 'gradle/jtwig-plugins/version-release.gradle'
-apply from: 'gradle/jtwig-plugins/coverage-support.gradle'
-apply from: 'gradle/jtwig-plugins/ide-support.gradle'
-apply from: 'gradle/jtwig-plugins/bintray.gradle'
+apply from: 'gradle/jtwig-version.gradle'
+apply from: 'gradle/jacoco.gradle'
+apply from: 'gradle/bintray.gradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -15,6 +13,19 @@ repositories {
     maven {
         url "http://dl.bintray.com/jtwig/maven"
     }
+    maven {
+        url "http://dl.bintray.com/jtwig/snapshots"
+    }
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
 }
 
 buildscript {
@@ -27,14 +38,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-        classpath 'org.jtwig:jtwig-release-plugin:1.+'
     }
 }
 
 dependencies {
-    compile 'org.jtwig:jtwig-web:1.+'
+    compile "org.jtwig:jtwig-web:$jtwigVersion"
 
     compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
 
@@ -53,23 +62,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     provided 'javax.servlet:javax.servlet-api:3.1.0'
-}
-
-jtwigRelease {
-    version = System.getenv("JTWIG_VERSION")
-
-    git {
-        username = System.getenv("GITHUB_USER")
-        password = System.getenv("GITHUB_PASS")
-    }
-
-    github {
-        username = System.getenv("GITHUB_USER")
-        token = System.getenv("GITHUB_TOKEN")
-    }
-
-    bintray {
-        user = System.getenv("BINTRAY_USER")
-        apiKey = System.getenv("BINTRAY_KEY")
-    }
 }
