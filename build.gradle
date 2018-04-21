@@ -42,7 +42,7 @@ buildscript {
 dependencies {
     compile "org.jtwig:jtwig-web:$jtwigVersion"
 
-    compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
+    compile 'org.springframework:spring-webmvc:5.0.5.RELEASE'
 
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.1'
